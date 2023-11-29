@@ -1,45 +1,45 @@
-import React, {useState} from 'react'
-import {NavLink} from "react-router-dom";
+import React, { useState } from "react";
+import { Navbar, Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export default function Header() {
-    const [click, setClick] = useState(false);
-    const handleClick = () => setClick(!click);
-    return (<div>
-        <div className='container'>
-            <div className='row'>
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <div className="container-fluid">
-                        <a className="navbar-brand" href="#">
-                            Navbar
-                        </a>
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"/>
-                        </button>
-                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
-                                <li class="nav-item">
-                                    <NavLink exact to="/" activeClassName="active" className="nav-links text-decoration-none"
-                                        onClick={handleClick}>
-                                        Home
-                                    </NavLink>
-                                </li>
-                                <li class="nav-item">
-                                    <NavLink exact to="/about" activeClassName="active" className="nav-links text-decoration-none"
-                                        onClick={handleClick}>
-                                        About US
-                                    </NavLink>
-                                </li>
-                                <li class="nav-item">
-                                    <NavLink exact to="/contact" activeClassName="active" className="nav-links text-decoration-none"
-                                        onClick={handleClick}>
-                                        CONTACT US
-                                    </NavLink>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-            </div>
+  const [expanded, setExpanded] = useState(false);
+
+  const handleNavbarToggle = () => {
+    setExpanded(!expanded);
+  };
+
+  const handleLinkClick = () => {
+    setExpanded(false);
+  };
+  return (
+    <div>
+      <div className="container">
+        <div className="row">
+          <Navbar bg="dark" variant="dark" expand="lg" expanded={expanded}>
+            <Navbar.Brand as={Link} to="/" onClick={handleLinkClick}>
+              Logo
+            </Navbar.Brand>
+            <Navbar.Toggle
+              aria-controls="basic-navbar-nav"
+              onClick={handleNavbarToggle}
+            />
+            <Navbar.Collapse>
+              <Nav className="ms-auto">
+                <Nav.Link as={Link} to="/" onClick={handleLinkClick}>
+                  Home
+                </Nav.Link>
+                <Nav.Link as={Link} to="/about" onClick={handleLinkClick}>
+                  About
+                </Nav.Link>
+                <Nav.Link as={Link} to="/contact" onClick={handleLinkClick}>
+                  Contact Us
+                </Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
         </div>
-    </div>)
+      </div>
+    </div>
+  );
 }

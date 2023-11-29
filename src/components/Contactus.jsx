@@ -1,9 +1,14 @@
-import React from 'react'
-import Header from './Header'
+import React from "react";
+import Header from "./Header";
 
 export default function Contactus() {
-    return (<div>
-        <Header/>
-        <h1>Contact</h1>
-    </div>)
+  return (
+    <div>
+      <div className="container">
+        <div className="row">
+          <h1>Contact page</h1>
+        </div>
+      </div>
+    </div>
+  );
 }
